@@ -73,3 +73,5 @@ The site is being built incrementally, one scoped piece at a time.
   - lizard.png → Lizard chapter artwork frame (uploaded official art).
   - golden-snow-1/2.png → new product "Archive Jean No. 001 — Golden Snow™" ($340 PLACEHOLDER price, brown-bear collection, hover swaps between the two sheets).
   - Still pending: Bee character artwork + original full logo. All prices placeholder.
+
+- 2026-06: Bee official artwork integrated (Queen Bee throne room) → /images/official/bee.png in Bee chapter frame. All 5 character frames now filled with official artwork. Only the original full logo remains pending.

@@ -67,6 +67,7 @@ export const CHAPTERS = [
     essence: ["Nature", "Honey", "Pollination", "The Hive"],
     heroImage: `${IMG}/bee-meadow.jpg`,
     envImage: `${IMG}/honeycomb.jpg`,
+    artwork: "/images/official/bee.png",
     tagline: "The center of the HoneyGold universe.",
     story: [
       "Everything in the HoneyGold universe begins with the Bee. It is the first traveler of the landscape — moving from flower to flower, carrying life between them, asking nothing in return but the season itself.",
