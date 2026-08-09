@@ -1,0 +1,161 @@
+const IMG = "/images/archives";
+
+export const CHAPTERS = [
+  {
+    slug: "brown-bear",
+    numeral: "I",
+    chapter: "Chapter One",
+    group: "The Bear",
+    title: "The Brown Bear",
+    shortTitle: "Brown Bear",
+    essence: ["Strength", "Labor", "Nature", "Perseverance"],
+    heroImage: `${IMG}/brown-bear.jpg`,
+    envImage: `${IMG}/canopy.jpg`,
+    tagline: "The weight of the day, carried with grace.",
+    story: [
+      "The Brown Bear belongs to the golden hours — the long light of morning, the slow warmth of the clearing. It moves without hurry and without doubt, shaped by seasons of work that no one witnesses and no one needs to.",
+      "Within the HoneyGold universe, the Brown Bear stands for what is earned rather than given. Strength that arrives through labor. Perseverance that asks for no audience. A life measured in honest days spent close to the land.",
+      "Every Brown Bear piece begins here: in the discipline of nature, in the quiet dignity of effort, in the patience of a creature that endures because it never stops moving forward.",
+    ],
+    inspiration: [
+      "Warm earth tones drawn from sunlit bark, dried grass, and turned soil.",
+      "Substantial, heavyweight construction — garments built to labor alongside you.",
+      "Textures that recall worn leather, raw canvas, and the forest floor at golden hour.",
+    ],
+    history: [
+      { era: "Origins", note: "The Brown Bear enters the HoneyGold universe as the first keeper of the land — the emblem of strength and labor." },
+      { era: "The Archive", note: "Collection imagery, campaign film, and early studies are preserved here as they are released." },
+    ],
+    quote: "Strength is a habit kept in silence.",
+  },
+  {
+    slug: "black-bear",
+    numeral: "I",
+    chapter: "Chapter One",
+    group: "The Bear",
+    title: "The Black Bear",
+    shortTitle: "Black Bear",
+    essence: ["Strength", "Labor", "Nature", "Perseverance"],
+    heroImage: `${IMG}/black-bear.jpg`,
+    envImage: `${IMG}/black-bear.jpg`,
+    tagline: "What endures in the dark, arrives in the light.",
+    story: [
+      "The Black Bear keeps the other side of the same hours — dusk, mist, the blue silence between the trees. Where the Brown Bear works in the open, the Black Bear perseveres unseen, moving through the deep forest with the same unbroken will.",
+      "In the HoneyGold universe, the Black Bear carries the harder half of perseverance: continuing when there is no light to work by, no warmth to work toward. Its strength is interior. Its labor is faith.",
+      "The Black Bear archive holds the shadowed counterpart of the house — the pieces made for the long night before the clearing.",
+    ],
+    inspiration: [
+      "Deep forest darks — charcoal, pine, wet stone — cut with a single line of gold.",
+      "Silhouettes made for movement through low light: layered, close, deliberate.",
+      "The texture of mist, bark at night, and the first cold hour before morning.",
+    ],
+    history: [
+      { era: "Origins", note: "The Black Bear arrives as the twin keeper of the forest — perseverance carried through the dark hours." },
+      { era: "The Archive", note: "Collection imagery, campaign film, and early studies are preserved here as they are released." },
+    ],
+    quote: "Perseverance does not need the light.",
+  },
+  {
+    slug: "bee",
+    numeral: "II",
+    chapter: "Chapter Two",
+    group: null,
+    title: "The Bee",
+    shortTitle: "Bee",
+    essence: ["Nature", "Honey", "Pollination", "The Hive"],
+    heroImage: `${IMG}/bee-meadow.jpg`,
+    envImage: `${IMG}/honeycomb.jpg`,
+    tagline: "The center of the HoneyGold universe.",
+    story: [
+      "Everything in the HoneyGold universe begins with the Bee. It is the first traveler of the landscape — moving from flower to flower, carrying life between them, asking nothing in return but the season itself.",
+      "The Bee binds the world together: the meadow to the hive, the blossom to the honey, the smallest labor to the greatest abundance. It is the reason the cinematic opening of this house begins in darkness and ends in gold.",
+      "Within these archives, the Bee is not a mascot. It is the origin — the drop of honey from which HoneyGold Drip takes its name, its color, and its devotion to the natural world.",
+    ],
+    inspiration: [
+      "Honey-gold as the signature of the house — amber light held in fabric.",
+      "The geometry of the hive: repetition, precision, and warmth in structure.",
+      "Meadows in bloom, pollen in the air, the hum of a living landscape.",
+    ],
+    history: [
+      { era: "Origins", note: "The Bee gives the house its name, its gold, and its opening film — two bumble bees meeting at the center of a black frame." },
+      { era: "The Archive", note: "Hive studies, meadow imagery, and the cinematic sequence are preserved here as they are released." },
+    ],
+    quote: "From the smallest wings, the whole world is carried.",
+  },
+  {
+    slug: "lizard",
+    numeral: "III",
+    chapter: "Chapter Three",
+    group: null,
+    title: "The Lizard",
+    shortTitle: "Lizard",
+    essence: ["RESILIENCE", "ADAPTATION", "REGENERATION"],
+    essenceLocked: true,
+    heroImage: `${IMG}/lizard-stone.jpg`,
+    envImage: `${IMG}/lizard-stone.jpg`,
+    tagline: "What is lost, returns. What survives, transforms.",
+    story: [
+      "The Lizard lives where the sun meets the stone — still until it must move, unchanged until it must change entirely. It carries the oldest lesson of the natural world: survival is not resistance, it is transformation.",
+      "Within the HoneyGold universe, the Lizard embodies renewal. What is broken grows back. What no longer serves is shed. Each season it emerges from itself, the same creature made new.",
+      "The Lizard archive gathers this idea of endurance-through-change — the willingness to let go, adapt, and begin again without losing what you are.",
+    ],
+    inspiration: [
+      "Sun-warmed stone, moss, and lichen — surfaces that record time and renewal.",
+      "Garments that transform: convertible forms, shed layers, second lives.",
+      "The palette of regeneration — mineral greys revived by living green and gold.",
+    ],
+    history: [
+      { era: "Origins", note: "The Lizard joins the universe as the emblem of renewal — resilience, adaptation, regeneration." },
+      { era: "The Archive", note: "Studies, imagery, and collection history are preserved here as they are released." },
+    ],
+    quote: "To begin again is not to start over.",
+  },
+  {
+    slug: "cat",
+    numeral: "IV",
+    chapter: "Chapter Four",
+    group: null,
+    title: "The Cat",
+    shortTitle: "Cat",
+    essence: [],
+    heroImage: `${IMG}/cat-dusk.jpg`,
+    envImage: `${IMG}/cat-dusk.jpg`,
+    tagline: "The quiet observer of the HoneyGold world.",
+    story: [
+      "The Cat moves through the HoneyGold landscape on its own terms — at dusk, along the garden wall, appearing exactly where it chooses and never where it is expected.",
+      "Its chapter in the archive is still being written. The official story, creative inspiration, and collection history of the Cat will take their place here as the house releases them.",
+      "For now, the Cat keeps its silence — present, watchful, and entirely its own.",
+    ],
+    inspiration: [
+      "Dusk light on stone and ivy — the hour the garden belongs to no one.",
+      "Movement without sound; presence without announcement.",
+      "A chapter held open for the official story to come.",
+    ],
+    history: [
+      { era: "The Archive", note: "The Cat's story, imagery, and collection history will be preserved here as they are released." },
+    ],
+    quote: "Some stories choose their own hour.",
+  },
+];
+
+export const getChapter = (slug) => CHAPTERS.find((c) => c.slug === slug);
+
+export const PRODUCTS = [
+  { id: "bb-01", character: "brown-bear", name: "Brown Bear Heavyweight Hoodie", price: 185 },
+  { id: "bb-02", character: "brown-bear", name: "Golden Hour Field Jacket", price: 340 },
+  { id: "bb-03", character: "brown-bear", name: "Brown Bear Signature Tee", price: 95 },
+  { id: "kb-01", character: "black-bear", name: "Black Bear Midnight Hoodie", price: 185 },
+  { id: "kb-02", character: "black-bear", name: "Deep Forest Overshirt", price: 295 },
+  { id: "kb-03", character: "black-bear", name: "Black Bear Signature Tee", price: 95 },
+  { id: "be-01", character: "bee", name: "HoneyGold Bee Varsity Jacket", price: 420 },
+  { id: "be-02", character: "bee", name: "Hive Knit Crewneck", price: 225 },
+  { id: "be-03", character: "bee", name: "Pollinator Signature Tee", price: 95 },
+  { id: "lz-01", character: "lizard", name: "Regeneration Convertible Parka", price: 460 },
+  { id: "lz-02", character: "lizard", name: "Lizard Shed-Layer Hoodie", price: 205 },
+  { id: "lz-03", character: "lizard", name: "Resilience Signature Tee", price: 95 },
+  { id: "ct-01", character: "cat", name: "Dusk Garden Bomber", price: 385 },
+  { id: "ct-02", character: "cat", name: "Cat Quiet-Hour Crewneck", price: 215 },
+  { id: "ct-03", character: "cat", name: "Cat Signature Tee", price: 95 },
+];
+
+export const productsFor = (slug) => PRODUCTS.filter((p) => p.character === slug);

@@ -1,0 +1,31 @@
+{
+  "summary": "Frontend-only E2E testing of HoneyGold Drip Step 5 (da HG Archives + Collections) on the preview URL. Executed 4 Playwright suites (desktop 1920x1080 + mobile 390x844): homepage hero regression, navigation/scroll-glass/ComingSoon, /archives index, all 5 chapter pages, prev/next cycling, invalid slug redirect, /collections filters + cart + toast + story links, scroll-restore, and mobile responsive layout. 100% of the requested functional checks passed with zero console/page errors and zero broken images (all hero/env background JPGs return 200). Only one notable design defect found (low-contrast archives intro headline) plus two cosmetic/minor observations.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/archives intro (archives-title, archives-statement)", "issues": ["Low contrast: .hg-arch-intro-scrim uses radial-gradient(ellipse at center, transparent 20% ...) so the scrim is fully transparent exactly where canopy.jpg has its bright sun-burst. The ivory 'DA HG ARCHIVES' title and the statement quote sit on that highlight and are barely legible (see desktop screenshot). Suggest raising center opacity (e.g. rgba(0,0,0,0.35) at 20%) or adding a localized text scrim behind the content block."]},
+      {"screen": "Collections - sonner toast", "issues": ["Toaster is configured theme=\"dark\" but the toast renders as a light/white card with dark text, clashing with the otherwise all-dark luxury palette; toast description text is also low contrast on the light card. Cosmetic only - toast content and timing are correct."]},
+      {"screen": "Collections - cart", "issues": ["cartCount is component-local state, so the Cart counter resets to 0 on any route change (e.g. Read the story -> back). Expected for this MVP stage but worth lifting to context/localStorage when checkout lands."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix /archives intro contrast: strengthen .hg-arch-intro-scrim center opacity so archives-title and archives-statement are readable over the canopy sun-burst.",
+    "Optional: make the sonner toast match the dark theme (currently renders light).",
+    "Optional: persist cart count across routes (context or localStorage)."
+  ],
+  "critical_code_review_comments": [
+    "archives.css is 870 lines - consider splitting into archives-index / chapter / shop partials before it grows further.",
+    "ArchiveChapter.jsx renders <Particles /> twice on the Bee chapter (hero + story), producing 24 .hg-particle nodes; intentional but worth confirming for perf/consistency.",
+    "Chapter pages render essence only when chapter.essence.length > 0, so the Cat chapter has no chapter-essence node - any future test asserting the section on every chapter will fail (documented behaviour, not a bug)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% of functional checks passed"},
+  "seed_data_creation": "None - all data is static frontend data in /app/frontend/src/data/archives.js",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified passing: hero-video autoplays (webm, readyState 4, not paused); hero-archives-button -> /archives, hero-collection-button -> /collections; nav transparent at top then hg-nav--scrolled after 24px; all 6 nav links; About/Journal/Contact -> coming-soon. /archives: title 'Da HG Archives', statement quote matches the required wording exactly (curly quotes + em dash), both bear doors navigate, chapter-row/link for bee/lizard/cat present, archives-shop-cta works. All 5 chapter pages render chapter-hero/title/story, artwork-frame-{slug} with 'Official artwork · awaiting upload', 3 inspiration bullets, chapter-environment (bg image 200), chapter-history, 3 chapter-product-* cards, chapter-shop-cta -> /collections?c={slug}. Lizard essence is exactly RESILIENCE/ADAPTATION/REGENERATION. Bee has 24 .hg-particle nodes animating hg-float. next cycles brown-bear->black-bear->bee->lizard->cat->brown-bear; prev from brown-bear -> cat. /archives/unknown redirects to /archives. Collections: 15 products, every filter chip yields exactly 3 matching products and syncs ?c=, ?c=lizard pre-filters with active chip, add-to-cart increments cart-count and fires sonner toast, product-story-link-* navigates to matching chapter. ScrollToTop confirmed (scrollY 0 after navigating from bottom of /archives). Mobile 390x844: burger + overlay menu work, body overflow released after nav, bear doors stack vertically, single-column grid (342px), chips overflow-x auto (scrollW 627 > clientW 342), no horizontal page overflow on any page.",
+  "rca_of_the_issue": "Contrast defect RCA: .hg-arch-intro-scrim (archives.css:45-52) layers a radial-gradient that is 'transparent 20%' at the center on top of /images/archives/canopy.jpg, whose brightest region (sun rays) is centered. The centered ivory title/quote therefore have almost no luminance separation from the background. Reproduce: open /archives at 1920x1080 and read the headline."
+}

@@ -1,6 +1,20 @@
 import "@/App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "@/styles/archives.css";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
+import { Toaster } from "@/components/ui/sonner";
+import Archives from "@/pages/Archives";
+import ArchiveChapter from "@/pages/ArchiveChapter";
+import Collections from "@/pages/Collections";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const Home = () => (
   <main data-testid="homepage" className="hg-home">
@@ -78,11 +92,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/archives" element={<Archives />} />
+          <Route path="/archives/:slug" element={<ArchiveChapter />} />
+          <Route path="/collections" element={<Collections />} />
           <Route path="*" element={<ComingSoon />} />
         </Routes>
+        <Toaster position="bottom-right" theme="dark" />
       </BrowserRouter>
     </div>
   );
