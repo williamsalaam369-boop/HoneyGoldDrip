@@ -14,6 +14,7 @@ const Home = () => (
         playsInline
         preload="auto"
       >
+        <source src="/videos/honeygold-intro.webm" type="video/webm" />
         <source src="/videos/honeygold-intro.mp4" type="video/mp4" />
       </video>
       <div className="hg-hero-scrim" />

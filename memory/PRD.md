@@ -25,7 +25,11 @@ The site is being built incrementally, one scoped piece at a time.
   - Cinematic scrim (vignette + gradient) for text readability over video.
   - Overlay content fades in after 3s: HoneyGold Drip™ wordmark (typographic placeholder pending original logo file), "Premium Fashion Rooted in Nature", gold rule, three-line subtext, and two pill buttons — "Enter da HG Archives" (solid gold → /archives) and "Explore the Collection" (ghost glass → /collections).
   - Navigation and stand-in scroll sections unchanged.
-- 2026-08-09: Sora pipeline ready but generation BLOCKED: universal key free plan rejected `sora-2` ("Upgrade to Standard or Pro"). Script saved at `/app/scripts/generate_intro_video.py` (prompt encodes full bee/forest/beehive brief, sora-2, 1280x720, 4s). No credits spent. User decision: "we will use Sora another time."
+- 2026-08-09: Sora intro video GENERATED and live (credits recharged by user)
+  - `sora-2`, 1280x720, 4s, saved to `/app/frontend/public/videos/honeygold-intro.mp4` (2.5 MB) + VP9 WebM transcode `honeygold-intro.webm` (956 KB, first source for codec coverage; MP4 fallback).
+  - Frame review: two side-profile bumble bees meet on black → golden flash → dense forest with large right-side foreground tree, beehive with dripping golden honey, bees in flight. Matches brief; no text/logo in video.
+  - Verified playing in-browser: autoplay, muted, loops (duration 4s), overlay text readable over scrim.
+  - Generation script: `/app/scripts/generate_intro_video.py` (re-run to create v2 after user review).
 - 2026-07-02: Navigation component (`/app/frontend/src/components/Navigation.jsx`)
   - Fixed top bar, transparent at page top → dark glass (blur + gold hairline) after 24px scroll, with height shrink.
   - Typographic brand mark "HoneyGold Drip™" (placeholder until original logo asset is supplied).
@@ -43,5 +47,5 @@ The site is being built incrementally, one scoped piece at a time.
 - P2: Footer.
 
 ## Next Tasks
-1. Generate Sora intro when plan allows (upgrade to Standard/Pro OR supply own OpenAI key), then run: `cd /app/backend && python /app/scripts/generate_intro_video.py` → video auto-plays in hero. Review v1 before generating more versions.
+1. User reviews Sora v1; if approved keep, else refine prompt and generate v2 (spend credits only after review per user instruction).
 2. Obtain original logo file from user; swap typographic wordmark in nav + hero.
