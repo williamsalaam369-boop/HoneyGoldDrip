@@ -291,6 +291,167 @@ code {
     color: var(--hg-gold);
 }
 
+/* ---- Cinematic hero ---- */
+.hg-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: #000;
+}
+
+.hg-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hg-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.45) 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+}
+
+.hg-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 120px 24px 80px;
+    max-width: 860px;
+    animation: hg-hero-reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 3s both;
+}
+
+@keyframes hg-hero-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.hg-hero-logo {
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-size: clamp(38px, 6vw, 72px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--hg-ivory);
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55);
+}
+
+.hg-hero-logo sup {
+    font-size: 0.35em;
+    letter-spacing: 0;
+    color: var(--hg-gold);
+}
+
+.hg-hero-tagline {
+    margin-top: 20px;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--hg-gold);
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
+}
+
+.hg-rule--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hg-hero-sub {
+    margin-top: 24px;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 2.1;
+    letter-spacing: 0.12em;
+    color: rgba(243, 236, 221, 0.85);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hg-hero-actions {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hg-btn {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 34px;
+    border-radius: 999px;
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease;
+}
+
+.hg-btn:hover {
+    transform: translateY(-2px);
+}
+
+.hg-btn--solid {
+    background: var(--hg-gold);
+    color: #14100a;
+    border: 1px solid var(--hg-gold);
+    box-shadow: 0 8px 30px rgba(201, 162, 75, 0.35);
+}
+
+.hg-btn--solid:hover {
+    background: #dab45f;
+    border-color: #dab45f;
+    box-shadow: 0 12px 38px rgba(201, 162, 75, 0.5);
+}
+
+.hg-btn--ghost {
+    background: rgba(11, 10, 8, 0.25);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: var(--hg-ivory);
+    border: 1px solid rgba(243, 236, 221, 0.55);
+}
+
+.hg-btn--ghost:hover {
+    border-color: var(--hg-gold);
+    color: var(--hg-gold);
+}
+
+@media (max-width: 640px) {
+    .hg-hero-actions {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .hg-btn {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+}
+
 /* ---- Temporary stand-in backdrop (to be replaced by the cinematic hero) ---- */
 .hg-home {
     background: var(--hg-ink);
