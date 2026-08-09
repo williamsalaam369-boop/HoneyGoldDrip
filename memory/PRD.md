@@ -67,3 +67,9 @@ The site is being built incrementally, one scoped piece at a time.
 - 2026-06: Official artwork integrated (user uploaded 5 assets)
   - `/app/frontend/public/images/official/`: brown-bear.png, black-bear.png, cat.png (chapter artwork frames — displayed unmodified, object-fit contain), legacy.png (new "House Legacy" section on /archives: "Preserved in Honey. Eternalized in Legacy."), jeans.png (new real product "Waistband Jeans — Slim Fit" $310 placeholder price, bee collection, image shown uncropped).
   - ArtworkFrame now accepts src; empty frames remain for Bee + Lizard artwork (still awaiting upload). Original logo also still pending.
+
+- 2026-06: Emblem created + 3 more official assets integrated
+  - Created HG emblem per user request (golden honey drop, white sparkle bottom-right) — generated on black, converted to transparent PNG via flood-fill → /images/official/emblem.png. Placed in nav brand (26px) and hero above wordmark (78px, subtle drip float animation).
+  - lizard.png → Lizard chapter artwork frame (uploaded official art).
+  - golden-snow-1/2.png → new product "Archive Jean No. 001 — Golden Snow™" ($340 PLACEHOLDER price, brown-bear collection, hover swaps between the two sheets).
+  - Still pending: Bee character artwork + original full logo. All prices placeholder.

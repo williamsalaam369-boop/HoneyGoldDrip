@@ -95,6 +95,7 @@ export const CHAPTERS = [
     essenceLocked: true,
     heroImage: `${IMG}/lizard-stone.jpg`,
     envImage: `${IMG}/lizard-stone.jpg`,
+    artwork: "/images/official/lizard.png",
     tagline: "What is lost, returns. What survives, transforms.",
     story: [
       "The Lizard lives where the sun meets the stone — still until it must move, unchanged until it must change entirely. It carries the oldest lesson of the natural world: survival is not resistance, it is transformation.",
@@ -144,6 +145,7 @@ export const CHAPTERS = [
 export const getChapter = (slug) => CHAPTERS.find((c) => c.slug === slug);
 
 export const PRODUCTS = [
+  { id: "hg-jeans-02", character: "brown-bear", name: "Archive Jean No. 001 — Golden Snow™", price: 340, image: "/images/official/golden-snow-1.png", hoverImage: "/images/official/golden-snow-2.png" },
   { id: "bb-01", character: "brown-bear", name: "Brown Bear Heavyweight Hoodie", price: 185 },
   { id: "bb-02", character: "brown-bear", name: "Golden Hour Field Jacket", price: 340 },
   { id: "bb-03", character: "brown-bear", name: "Brown Bear Signature Tee", price: 95 },

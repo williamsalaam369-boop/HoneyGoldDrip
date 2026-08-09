@@ -33,6 +33,12 @@ const Home = () => (
       </video>
       <div className="hg-hero-scrim" />
       <div className="hg-hero-content">
+        <img
+          src="/images/official/emblem.png"
+          alt="HoneyGold Drip emblem"
+          className="hg-hero-emblem"
+          data-testid="hero-emblem"
+        />
         <h1 className="hg-hero-logo" data-testid="hero-logo">
           HoneyGold Drip<sup>™</sup>
         </h1>

@@ -44,6 +44,12 @@ export const Navigation = () => {
       >
         <div className="hg-nav-inner">
           <Link to="/" data-testid="nav-brand-link" className="hg-brand">
+            <img
+              src="/images/official/emblem.png"
+              alt=""
+              className="hg-brand-emblem"
+              data-testid="nav-brand-emblem"
+            />
             HoneyGold Drip<sup>™</sup>
           </Link>
 

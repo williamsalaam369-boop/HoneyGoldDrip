@@ -152,7 +152,12 @@ export default function ArchiveChapter() {
               >
                 <div className="hg-product-visual">
                   {p.image ? (
-                    <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
+                    <>
+                      <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
+                      {p.hoverImage && (
+                        <img src={p.hoverImage} alt="" className="hg-product-img hg-product-img--hover" loading="lazy" />
+                      )}
+                    </>
                   ) : (
                     <>
                       <span className="hg-artframe-monogram">HG</span>
