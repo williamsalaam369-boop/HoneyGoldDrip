@@ -113,3 +113,297 @@ code {
         border-bottom-color: inherit;
     }
 }
+
+
+/* ---- HoneyGold Drip — Navigation & stand-in backdrop ---- */
+:root {
+    --hg-ivory: #f3ecdd;
+    --hg-gold: #c9a24b;
+    --hg-ink: #0b0a08;
+}
+
+.hg-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    color: var(--hg-ivory);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+        background-color 0.5s ease,
+        border-color 0.5s ease,
+        backdrop-filter 0.5s ease;
+}
+
+.hg-nav--scrolled {
+    background: rgba(11, 10, 8, 0.72);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201, 162, 75, 0.16);
+}
+
+.hg-nav-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 48px;
+    transition: padding 0.5s ease;
+}
+
+.hg-nav--scrolled .hg-nav-inner {
+    padding: 14px 48px;
+}
+
+.hg-brand {
+    font-family: "Italiana", serif;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--hg-ivory);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.35s ease;
+}
+
+.hg-brand:hover {
+    color: var(--hg-gold);
+}
+
+.hg-brand sup {
+    font-size: 0.45em;
+    letter-spacing: 0;
+    margin-left: 2px;
+    color: var(--hg-gold);
+}
+
+.hg-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hg-link {
+    position: relative;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 221, 0.82);
+    text-decoration: none;
+    padding: 6px 0;
+    transition:
+        color 0.35s ease,
+        letter-spacing 0.35s ease;
+}
+
+.hg-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--hg-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hg-link:hover {
+    color: var(--hg-ivory);
+    letter-spacing: 0.38em;
+}
+
+.hg-link:hover::after,
+.hg-link--active::after {
+    transform: scaleX(1);
+}
+
+.hg-link--active {
+    color: var(--hg-gold);
+}
+
+.hg-burger {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--hg-ivory);
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hg-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: rgba(8, 7, 5, 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.hg-overlay--open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hg-overlay-link {
+    font-family: "Italiana", serif;
+    font-size: clamp(28px, 5vw, 44px);
+    color: var(--hg-ivory);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.3s ease;
+}
+
+.hg-overlay--open .hg-overlay-link {
+    opacity: 1;
+    transform: none;
+}
+
+.hg-overlay--open .hg-overlay-link:nth-child(1) { transition-delay: 0.06s; }
+.hg-overlay--open .hg-overlay-link:nth-child(2) { transition-delay: 0.12s; }
+.hg-overlay--open .hg-overlay-link:nth-child(3) { transition-delay: 0.18s; }
+.hg-overlay--open .hg-overlay-link:nth-child(4) { transition-delay: 0.24s; }
+.hg-overlay--open .hg-overlay-link:nth-child(5) { transition-delay: 0.3s; }
+.hg-overlay--open .hg-overlay-link:nth-child(6) { transition-delay: 0.36s; }
+
+.hg-overlay-link:hover {
+    color: var(--hg-gold);
+}
+
+/* ---- Temporary stand-in backdrop (to be replaced by the cinematic hero) ---- */
+.hg-home {
+    background: var(--hg-ink);
+    color: var(--hg-ivory);
+    font-family: "Jost", sans-serif;
+}
+
+.hg-hero-standin {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hg-hero-standin::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
+}
+
+.hg-hero-standin > * {
+    position: relative;
+}
+
+.hg-mark {
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 72px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.hg-mark sup {
+    font-size: 0.35em;
+    color: var(--hg-gold);
+}
+
+.hg-note {
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 221, 0.5);
+}
+
+.hg-rule {
+    width: 64px;
+    height: 1px;
+    background: var(--hg-gold);
+    margin-top: 28px;
+}
+
+.hg-return {
+    margin-top: 26px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--hg-ivory);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201, 162, 75, 0.5);
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.hg-return:hover {
+    color: var(--hg-gold);
+}
+
+.hg-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(201, 162, 75, 0.12);
+}
+
+.hg-section p {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 221, 0.35);
+}
+
+.hg-section--moss {
+    background: #101410;
+}
+
+.hg-section--bark {
+    background: #151009;
+}
+
+@media (max-width: 900px) {
+    .hg-links {
+        display: none;
+    }
+
+    .hg-burger {
+        display: inline-flex;
+    }
+
+    .hg-nav-inner {
+        padding: 20px 24px;
+    }
+
+    .hg-nav--scrolled .hg-nav-inner {
+        padding: 14px 24px;
+    }
+}
