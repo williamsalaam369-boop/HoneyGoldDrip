@@ -49,3 +49,17 @@ The site is being built incrementally, one scoped piece at a time.
 ## Next Tasks
 1. User reviews Sora v1; if approved keep, else refine prompt and generate v2 (spend credits only after review per user instruction).
 2. Obtain original logo file from user; swap typographic wordmark in nav + hero.
+
+- 2026-06 (Step 5): da HG Archives + basic Collections shop — TESTED (iteration_1.json, 100% pass)
+  - `/archives`: cinematic intro (canopy image, exact required statement quote), Chapter One THE BEAR with separate Brown Bear / Black Bear doors, chapter rows for Bee, Lizard, Cat, outro CTA → /collections.
+  - `/archives/:slug` chapter pages (brown-bear, black-bear, bee, lizard, cat): hero, essence words (Lizard locked to RESILIENCE / ADAPTATION / REGENERATION exactly), editorial story + quote, OFFICIAL ARTWORK placeholder frame ("Official artwork · awaiting upload" — swap in user's original assets unchanged when uploaded), design inspiration, parallax environment band, collection history, 3 product cards + "Shop the Collection" CTA → /collections?c={slug}, prev/next chapter nav. Bee chapter has floating gold particles.
+  - `/collections`: 15 placeholder products (3 per character), character filter chips synced to ?c= param, Add to Cart (local count + dark brand toast), "Read the story" links back to chapters. Cart is component-local (resets on route change — lift to context/localStorage when checkout lands).
+  - Assets: 7 AI-generated environmental images in `/app/frontend/public/images/archives/` (canopy regenerated once to remove triptych seams). Editorial copy is agent-written placeholder per user choice.
+  - Files: pages/Archives.jsx, pages/ArchiveChapter.jsx, pages/Collections.jsx, data/archives.js, components/Reveal.jsx, components/ArtworkFrame.jsx, styles/archives.css; App.js routes + ScrollToTop + branded Toaster.
+
+## Backlog
+- P0: User uploads ORIGINAL logo + official character artwork (Brown Bear, Black Bear, Bee, Lizard, Cat) → swap into hero wordmark + artwork frames unchanged.
+- P0: User review/approval of the first Sora intro video (one-version rule — no regeneration without approval).
+- P1: Full Shop (Step 4 proper): real products, cart persistence (context/localStorage), checkout/payments.
+- P1: About, Journal, Contact pages (currently ComingSoon).
+- P2: Official story text to replace placeholder editorial copy in archives.

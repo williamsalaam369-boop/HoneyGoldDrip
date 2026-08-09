@@ -101,7 +101,18 @@ function App() {
           <Route path="/collections" element={<Collections />} />
           <Route path="*" element={<ComingSoon />} />
         </Routes>
-        <Toaster position="bottom-right" theme="dark" />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: "#14100a",
+              color: "#f3ecdd",
+              border: "1px solid rgba(201, 162, 75, 0.35)",
+              fontFamily: "'Jost', sans-serif",
+              letterSpacing: "0.04em",
+            },
+          }}
+        />
       </BrowserRouter>
     </div>
   );
