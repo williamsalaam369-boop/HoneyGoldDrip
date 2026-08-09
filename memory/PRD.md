@@ -63,3 +63,7 @@ The site is being built incrementally, one scoped piece at a time.
 - P1: Full Shop (Step 4 proper): real products, cart persistence (context/localStorage), checkout/payments.
 - P1: About, Journal, Contact pages (currently ComingSoon).
 - P2: Official story text to replace placeholder editorial copy in archives.
+
+- 2026-06: Official artwork integrated (user uploaded 5 assets)
+  - `/app/frontend/public/images/official/`: brown-bear.png, black-bear.png, cat.png (chapter artwork frames — displayed unmodified, object-fit contain), legacy.png (new "House Legacy" section on /archives: "Preserved in Honey. Eternalized in Legacy."), jeans.png (new real product "Waistband Jeans — Slim Fit" $310 placeholder price, bee collection, image shown uncropped).
+  - ArtworkFrame now accepts src; empty frames remain for Bee + Lizard artwork (still awaiting upload). Original logo also still pending.

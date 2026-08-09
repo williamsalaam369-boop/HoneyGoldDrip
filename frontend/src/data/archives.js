@@ -11,6 +11,7 @@ export const CHAPTERS = [
     essence: ["Strength", "Labor", "Nature", "Perseverance"],
     heroImage: `${IMG}/brown-bear.jpg`,
     envImage: `${IMG}/canopy.jpg`,
+    artwork: "/images/official/brown-bear.png",
     tagline: "The weight of the day, carried with grace.",
     story: [
       "The Brown Bear belongs to the golden hours — the long light of morning, the slow warmth of the clearing. It moves without hurry and without doubt, shaped by seasons of work that no one witnesses and no one needs to.",
@@ -38,6 +39,7 @@ export const CHAPTERS = [
     essence: ["Strength", "Labor", "Nature", "Perseverance"],
     heroImage: `${IMG}/black-bear.jpg`,
     envImage: `${IMG}/black-bear.jpg`,
+    artwork: "/images/official/black-bear.png",
     tagline: "What endures in the dark, arrives in the light.",
     story: [
       "The Black Bear keeps the other side of the same hours — dusk, mist, the blue silence between the trees. Where the Brown Bear works in the open, the Black Bear perseveres unseen, moving through the deep forest with the same unbroken will.",
@@ -120,6 +122,7 @@ export const CHAPTERS = [
     essence: [],
     heroImage: `${IMG}/cat-dusk.jpg`,
     envImage: `${IMG}/cat-dusk.jpg`,
+    artwork: "/images/official/cat.png",
     tagline: "The quiet observer of the HoneyGold world.",
     story: [
       "The Cat moves through the HoneyGold landscape on its own terms — at dusk, along the garden wall, appearing exactly where it chooses and never where it is expected.",
@@ -147,6 +150,7 @@ export const PRODUCTS = [
   { id: "kb-01", character: "black-bear", name: "Black Bear Midnight Hoodie", price: 185 },
   { id: "kb-02", character: "black-bear", name: "Deep Forest Overshirt", price: 295 },
   { id: "kb-03", character: "black-bear", name: "Black Bear Signature Tee", price: 95 },
+  { id: "hg-jeans-01", character: "bee", name: "Waistband Jeans — Slim Fit", price: 310, image: "/images/official/jeans.png" },
   { id: "be-01", character: "bee", name: "HoneyGold Bee Varsity Jacket", price: 420 },
   { id: "be-02", character: "bee", name: "Hive Knit Crewneck", price: 225 },
   { id: "be-03", character: "bee", name: "Pollinator Signature Tee", price: 95 },

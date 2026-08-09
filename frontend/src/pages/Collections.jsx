@@ -73,8 +73,14 @@ export default function Collections() {
             <Reveal key={p.id} delay={(i % 3) * 100}>
               <article className="hg-product-card hg-product-card--shop" data-testid={`product-card-${p.id}`}>
                 <div className="hg-product-visual">
-                  <span className="hg-artframe-monogram">HG</span>
-                  <span className="hg-artframe-note">Product imagery coming soon</span>
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
+                  ) : (
+                    <>
+                      <span className="hg-artframe-monogram">HG</span>
+                      <span className="hg-artframe-note">Product imagery coming soon</span>
+                    </>
+                  )}
                 </div>
                 <span className="hg-product-char">{chapter.shortTitle}</span>
                 <span className="hg-product-name">{p.name}</span>

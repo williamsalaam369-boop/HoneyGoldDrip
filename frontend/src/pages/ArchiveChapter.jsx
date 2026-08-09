@@ -105,6 +105,7 @@ export default function ArchiveChapter() {
           <ArtworkFrame
             label={`${chapter.title} — Official Artwork`}
             testId={`artwork-frame-${slug}`}
+            src={chapter.artwork}
           />
         </Reveal>
         <Reveal className="hg-inspo" delay={140}>
@@ -150,8 +151,14 @@ export default function ArchiveChapter() {
                 data-testid={`chapter-product-${p.id}`}
               >
                 <div className="hg-product-visual">
-                  <span className="hg-artframe-monogram">HG</span>
-                  <span className="hg-artframe-note">Product imagery coming soon</span>
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
+                  ) : (
+                    <>
+                      <span className="hg-artframe-monogram">HG</span>
+                      <span className="hg-artframe-note">Product imagery coming soon</span>
+                    </>
+                  )}
                 </div>
                 <span className="hg-product-name">{p.name}</span>
                 <span className="hg-product-price">${p.price}</span>

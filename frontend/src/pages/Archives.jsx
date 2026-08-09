@@ -28,6 +28,26 @@ export default function Archives() {
         </div>
       </section>
 
+      <section className="hg-arch-section hg-legacy" data-testid="archives-legacy">
+        <Reveal className="hg-legacy-art">
+          <img
+            src="/images/official/legacy.png"
+            alt="HoneyGold Drip — Preserved in Honey. Eternalized in Legacy."
+            loading="lazy"
+            data-testid="legacy-artwork"
+          />
+        </Reveal>
+        <Reveal className="hg-legacy-copy" delay={140}>
+          <p className="hg-kicker">The House Legacy</p>
+          <h2 className="hg-chapter-title">Preserved in Honey.<br />Eternalized in Legacy.</h2>
+          <p className="hg-chapter-lede">
+            Official HoneyGold Drip™ artwork — the house's testament to
+            preservation, memory, and the golden thread that carries every
+            story forward.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="hg-arch-section" data-testid="chapter-bear-section">
         <Reveal className="hg-chapterhead">
           <span className="hg-chapter-numeral">I</span>
