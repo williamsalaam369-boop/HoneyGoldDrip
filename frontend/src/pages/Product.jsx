@@ -6,6 +6,7 @@ import {
 } from "@/data/archives";
 import { useCart } from "@/context/CartContext";
 import { Lightbox } from "@/components/Lightbox";
+import { SizeGuide } from "@/components/SizeGuide";
 import { Reveal } from "@/components/Reveal";
 
 export default function Product() {
@@ -16,6 +17,7 @@ export default function Product() {
   const [qty, setQty] = useState(1);
   const [zoom, setZoom] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
 
   if (!product) return <Navigate to="/collections" replace />;
 
@@ -56,7 +58,17 @@ export default function Product() {
           <div className="hg-rule" />
           <p className="hg-pdp-desc" data-testid="pdp-description">{product.description}</p>
 
-          <p className="hg-pdp-label">Size</p>
+          <div className="hg-pdp-size-head">
+            <p className="hg-pdp-label">Size</p>
+            <button
+              type="button"
+              className="hg-sg-trigger"
+              onClick={() => setGuideOpen(true)}
+              data-testid="size-guide-button"
+            >
+              Size Guide
+            </button>
+          </div>
           <div className="hg-size-row" data-testid="pdp-size-selector">
             {sizesFor(product).map((s) => (
               <button
@@ -89,6 +101,7 @@ export default function Product() {
         </Reveal>
       </div>
       <Lightbox src={shownImage} alt={product.name} open={zoom} onClose={() => setZoom(false)} />
+      <SizeGuide type={product.type} open={guideOpen} onClose={() => setGuideOpen(false)} />
     </main>
   );
 }
