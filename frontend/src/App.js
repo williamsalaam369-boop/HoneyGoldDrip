@@ -14,6 +14,8 @@ import Cart from "@/pages/Cart";
 import About from "@/pages/About";
 import PaymentSuccess from "@/pages/PaymentSuccess";
 import PaymentCancel from "@/pages/PaymentCancel";
+import Journal from "@/pages/Journal";
+import Contact from "@/pages/Contact";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -116,6 +118,8 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/payment/success" element={<PaymentSuccess />} />
             <Route path="/payment/cancel" element={<PaymentCancel />} />
             <Route path="*" element={<ComingSoon />} />

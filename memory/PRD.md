@@ -75,3 +75,20 @@ The site is being built incrementally, one scoped piece at a time.
   - Still pending: Bee character artwork + original full logo. All prices placeholder.
 
 - 2026-06: Bee official artwork integrated (Queen Bee throne room) → /images/official/bee.png in Bee chapter frame. All 5 character frames now filled with official artwork. Only the original full logo remains pending.
+
+- 2026-06: Full Shop + Checkout + About + Lightbox + Logo (tested: iteration_2.json, backend 11/11, all frontend flows incl. completed Stripe test payment)
+  - Approved pricing: SHIRTS S$48/M$50/L$52/XL$54/2XL$56/3XL$58/4XL$60; JEANS S$80→4XL$92. 5 shirts (Bear, Bee/Beehive, Lizard, Cat, Egyptian — artwork mapped ON garments via mockups) + 2 jeans (Golden Snow No. 001, Waistband No. 002). Size price carries product page→cart→checkout.
+  - Stripe: Emergent claimable sandbox (Flow A), server-side amounts, /api/payments/checkout + status + /api/stripe/webhook. payment_transactions in Mongo. Onboarding URL available for claiming account (in /tmp/sandbox.json, also via Payments tab).
+  - Persistent cart (localStorage hg-cart, CartContext), nav cart badge, /cart page, /payment/success (polling) + /payment/cancel.
+  - HG logo created (honey drop + HG pocket monogram + sparkle) → /images/official/logo.png in nav + hero + about.
+  - About page: Ecosystem Principle™, 5 pillars, Golden Drop promise. Lightbox on all artwork.
+- 2026-06: Journal + Contact pages (replaced coming-soon; tested via curl + screenshots)
+  - /journal: editorial featured-story area + 6 story cards, all clearly labeled placeholders (no fake articles), structured for future entries.
+  - /contact: form (name/email/inquiry type[General,Customer Support,Wholesale,Collaboration,Press,Business Inquiry]/message) → POST /api/contact → Mongo contact_messages; validation 400 bad subject / 422 bad email; success state + toast; mobile clean.
+
+## Advisory (not broken)
+- Transaction amount stored pre-tax; price tables duplicated backend+frontend; origin_url unvalidated; contact messages have no admin view yet.
+
+## Remaining Backlog
+- P1: Order History / admin view (user deferred), Size Guide (after product pages locked), Stripe claim + deploy (user deferred).
+- P2: Real journal content when provided; PayPal/Razorpay ("everything possible" — future).

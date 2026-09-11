@@ -227,6 +227,31 @@ async def stripe_webhook(request: Request):
     return {"status": "ok"}
 
 
+class ContactMessage(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+    email: str = Field(min_length=3, max_length=200, pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+    subject: str
+    message: str = Field(min_length=1, max_length=5000)
+
+
+CONTACT_SUBJECTS = {"General", "Customer Support", "Wholesale", "Collaboration", "Press", "Business Inquiry"}
+
+
+@api_router.post("/contact")
+async def submit_contact(msg: ContactMessage):
+    if msg.subject not in CONTACT_SUBJECTS:
+        raise HTTPException(400, "Invalid inquiry type")
+    await db.contact_messages.insert_one({
+        "id": str(uuid.uuid4()),
+        "name": msg.name,
+        "email": msg.email,
+        "subject": msg.subject,
+        "message": msg.message,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    })
+    return {"status": "received"}
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
