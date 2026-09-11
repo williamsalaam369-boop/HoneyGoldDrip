@@ -1,0 +1,36 @@
+{
+  "summary": "Full backend + frontend E2E test of HoneyGold Drip shop (iteration 2). Backend: 11/11 pytest tests pass (pricing exactness for all 14 size prices, Stripe checkout session creation + Mongo payment_transactions record with amount 216 for the specified mixed cart, per-size amount verification for all 7 shirt sizes, 400 on invalid product/invalid size/empty cart, 422 on qty 0, pending status for fresh session, 404 for unknown session, 400 on bad webhook signature). Frontend: collections (7 cards, correct 'From $48.00'/'From $80.00', categories, sizes, View Product, no broken images), ?c=brown-bear filter (bear-shirt + golden-snow-jeans) and clear-filter pill, PDP size->price for ALL 7 shirt sizes and jeans (default XL $54/$86, S $48/$80, 4XL $60/$92) updating immediately, qty stepper, add-to-cart toast + cart badge, cart per-size price/line totals/qty +/-/remove/cart-total, cart persistence across full reload (localStorage hg-cart), lightbox on PDP + /archives/bee + /archives legacy (close button + ESC), About page (title, statement, 5 pillars, closing CTAs), /payment/cancel, empty-cart state, success-page error state without session_id. COMPLETED A REAL STRIPE TEST PAYMENT with card 4242: redirect to checkout.stripe.com, paid, redirected to /payment/success which polled /api/payments/status and rendered 'Order Confirmed', cart cleared (hg-cart = []) and badge removed; Mongo record updated to status=completed, payment_status=paid, stripe_payment_intent_id set. Mobile 390x844: single-column grid (342px), no horizontal overflow on collections/PDP/cart, burger + cart icon visible, mobile nav works, PDP pricing and cart usable. Archives regression: hero WebM video loads (readyState 4), all 5 chapters render with artwork and correct /product/{id} strips.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/payments/checkout", "issue": "automatic_tax is enabled on the Stripe session but payment_transactions.amount stores only the pre-tax subtotal, so the stored amount can differ from the amount actually charged. Consider updating amount from the session/payment_intent on confirmation."},
+      {"endpoint": "/api/payments/status/{session_id}", "issue": "Returns 404 for unknown sessions (correct), but the frontend swallows the 404 and keeps polling for ~16s before showing 'Almost There' instead of an immediate failure state."},
+      {"endpoint": "/api/stripe/webhook", "issue": "Not verifiable end-to-end in preview (no live webhook delivery). Signature rejection path returns 400 correctly. Payment confirmation currently relies on the status-polling fallback, which worked."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile cart (390x844)", "issues": ["Cart line item wraps so the line total ($58.00) and REMOVE sit on a separate row below the qty stepper, visually detached from the item; acceptable but slightly awkward alignment"]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/backend_test.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Optional: persist tax-inclusive amount_total from Stripe on payment confirmation instead of pre-tax subtotal",
+    "Optional: treat a 404 from /api/payments/status as a terminal failure on /payment/success instead of polling 8 times"
+  ],
+  "critical_code_review_comments": [
+    "server.py duplicates the price tables that also live in frontend/src/data/archives.js; keep in sync or serve prices from /api/shop/pricing to the frontend to avoid drift.",
+    "Checkout does not validate the client-supplied origin_url; a malicious origin_url would produce success/cancel URLs pointing off-site. Consider whitelisting or deriving from request headers/env.",
+    "stripe.error.* is used for exception handling (stripe 14.4.1) — works today but is legacy; prefer stripe.StripeError / stripe.SignatureVerificationError."
+  ],
+  "updated_files": ["/app/backend/tests/backend_test.py"],
+  "success_rate": {"backend": "100% (11/11)", "frontend": "100% of tested flows"},
+  "seed_data_creation": "Created Stripe test checkout sessions + payment_transactions during testing; all pending test docs deleted afterwards. One completed real test payment record (cs_test_a1NHb7... , $48.00, paid) intentionally left for reference.",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "test_credentials": "No auth required. Stripe test card 4242 4242 4242 4242 works; note the Stripe page requires unchecking 'Save my information' (enableStripePass) to avoid mandatory phone validation, and the card accordion must be opened via JS click due to Stripe overlay intercepts.",
+  "context_for_next_testing_agent": "Backend regression suite is at /app/backend/tests/backend_test.py (pytest-xdist runs it in parallel; per-class fixtures are not shared across workers, so create sessions inside the test that needs them). Full shop/checkout/about/lightbox/mobile flows verified in iteration 2 with a real completed Stripe test payment. Remaining unverified: live Stripe webhook delivery (no external delivery in preview).",
+  "rca_of_the_issue": "No functional defects found. The only notable deviations are non-blocking: pre-tax amount stored in Mongo while automatic_tax is enabled, and the success page polling ignoring 404 responses."
+}

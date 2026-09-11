@@ -145,24 +145,24 @@ export const CHAPTERS = [
 
 export const getChapter = (slug) => CHAPTERS.find((c) => c.slug === slug);
 
+export const SIZES = ["S", "M", "L", "XL", "2XL", "3XL", "4XL"];
+export const SHIRT_SIZE_PRICES = { S: 48, M: 50, L: 52, XL: 54, "2XL": 56, "3XL": 58, "4XL": 60 };
+export const JEAN_SIZE_PRICES = { S: 80, M: 82, L: 84, XL: 86, "2XL": 88, "3XL": 90, "4XL": 92 };
+
 export const PRODUCTS = [
-  { id: "hg-jeans-02", character: "brown-bear", name: "Archive Jean No. 001 — Golden Snow™", price: 340, image: "/images/official/golden-snow-1.png", hoverImage: "/images/official/golden-snow-2.png" },
-  { id: "bb-01", character: "brown-bear", name: "Brown Bear Heavyweight Hoodie", price: 185 },
-  { id: "bb-02", character: "brown-bear", name: "Golden Hour Field Jacket", price: 340 },
-  { id: "bb-03", character: "brown-bear", name: "Brown Bear Signature Tee", price: 95 },
-  { id: "kb-01", character: "black-bear", name: "Black Bear Midnight Hoodie", price: 185 },
-  { id: "kb-02", character: "black-bear", name: "Deep Forest Overshirt", price: 295 },
-  { id: "kb-03", character: "black-bear", name: "Black Bear Signature Tee", price: 95 },
-  { id: "hg-jeans-01", character: "bee", name: "Waistband Jeans — Slim Fit", price: 310, image: "/images/official/jeans.png" },
-  { id: "be-01", character: "bee", name: "HoneyGold Bee Varsity Jacket", price: 420 },
-  { id: "be-02", character: "bee", name: "Hive Knit Crewneck", price: 225 },
-  { id: "be-03", character: "bee", name: "Pollinator Signature Tee", price: 95 },
-  { id: "lz-01", character: "lizard", name: "Regeneration Convertible Parka", price: 460 },
-  { id: "lz-02", character: "lizard", name: "Lizard Shed-Layer Hoodie", price: 205 },
-  { id: "lz-03", character: "lizard", name: "Resilience Signature Tee", price: 95 },
-  { id: "ct-01", character: "cat", name: "Dusk Garden Bomber", price: 385 },
-  { id: "ct-02", character: "cat", name: "Cat Quiet-Hour Crewneck", price: 215 },
-  { id: "ct-03", character: "cat", name: "Cat Signature Tee", price: 95 },
+  { id: "bear-shirt", type: "shirt", category: "Shirts", characters: ["brown-bear", "black-bear"], name: "Bear Design", image: "/images/products/brown-bear-front.jpg", hoverImage: "/images/products/black-bear-front.jpg", description: "Premium heavyweight tee with the official Bear artwork applied to the garment. Details beyond artwork and sizing: TO BE ANNOUNCED." },
+  { id: "bee-shirt", type: "shirt", category: "Shirts", characters: ["bee"], name: "Bee / Beehive Design", image: "/images/products/bee.jpg", description: "Premium heavyweight tee with the official Bee throne-room artwork applied to the garment. Details beyond artwork and sizing: TO BE ANNOUNCED." },
+  { id: "lizard-shirt", type: "shirt", category: "Shirts", characters: ["lizard"], name: "Lizard Design", image: "/images/products/lizard.jpg", description: "Premium heavyweight tee with the official Lizard artwork — RESILIENCE · ADAPTATION · REGENERATION. Details beyond artwork and sizing: TO BE ANNOUNCED." },
+  { id: "cat-shirt", type: "shirt", category: "Shirts", characters: ["cat"], name: "Cat Design", image: "/images/products/cat.jpg", description: "Premium heavyweight tee with the official Cat artwork applied to the garment. Details beyond artwork and sizing: TO BE ANNOUNCED." },
+  { id: "egyptian-shirt", type: "shirt", category: "Shirts", characters: [], name: "Egyptian Design", image: "/images/products/egyptian.jpg", description: "Premium heavyweight tee with the official 'Preserved in Honey. Eternalized in Legacy.' artwork applied to the garment. Details beyond artwork and sizing: TO BE ANNOUNCED." },
+  { id: "golden-snow-jeans", type: "jeans", category: "Jeans", characters: ["brown-bear"], name: "Golden Snow™ — Archive Jean No. 001", image: "/images/official/golden-snow-1.png", hoverImage: "/images/official/golden-snow-2.png", description: "White denim that resembles gold snow — as shown in the official reference. Further specifications: TO BE ANNOUNCED." },
+  { id: "waistband-jeans", type: "jeans", category: "Jeans", characters: ["bee"], name: "HoneyGold Drip™ Waistband Jean No. 002", image: "/images/official/jeans.png", description: "Premium black denim with metallic gold drip embroidery — as shown in the official reference. Further specifications: TO BE ANNOUNCED." },
 ];
 
-export const productsFor = (slug) => PRODUCTS.filter((p) => p.character === slug);
+export const getProduct = (id) => PRODUCTS.find((p) => p.id === id);
+export const sizesFor = () => SIZES;
+export const defaultSize = () => "XL";
+export const priceFor = (p, size) => (p.type === "shirt" ? SHIRT_SIZE_PRICES[size] : JEAN_SIZE_PRICES[size]);
+export const startingPrice = (p) => (p.type === "shirt" ? SHIRT_SIZE_PRICES.S : JEAN_SIZE_PRICES.S);
+export const formatPrice = (n) => `$${n.toFixed(2)}`;
+export const productsFor = (slug) => PRODUCTS.filter((p) => p.characters.includes(slug));

@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { CHAPTERS, getChapter, productsFor } from "@/data/archives";
+import { CHAPTERS, getChapter, productsFor, startingPrice, formatPrice } from "@/data/archives";
 import { Reveal } from "@/components/Reveal";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
 
@@ -146,27 +146,18 @@ export default function ArchiveChapter() {
           {products.map((p, i) => (
             <Reveal key={p.id} delay={i * 120}>
               <Link
-                to={`/collections?c=${slug}`}
+                to={`/product/${p.id}`}
                 className="hg-product-card"
                 data-testid={`chapter-product-${p.id}`}
               >
                 <div className="hg-product-visual">
-                  {p.image ? (
-                    <>
-                      <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
-                      {p.hoverImage && (
-                        <img src={p.hoverImage} alt="" className="hg-product-img hg-product-img--hover" loading="lazy" />
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <span className="hg-artframe-monogram">HG</span>
-                      <span className="hg-artframe-note">Product imagery coming soon</span>
-                    </>
+                  <img src={p.image} alt={p.name} className="hg-product-img" loading="lazy" />
+                  {p.hoverImage && (
+                    <img src={p.hoverImage} alt="" className="hg-product-img hg-product-img--hover" loading="lazy" />
                   )}
                 </div>
                 <span className="hg-product-name">{p.name}</span>
-                <span className="hg-product-price">${p.price}</span>
+                <span className="hg-product-price">From {formatPrice(startingPrice(p))}</span>
               </Link>
             </Reveal>
           ))}

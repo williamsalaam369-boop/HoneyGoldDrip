@@ -1,12 +1,19 @@
 import "@/App.css";
 import "@/styles/archives.css";
+import "@/styles/shop.css";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Toaster } from "@/components/ui/sonner";
+import { CartProvider } from "@/context/CartContext";
 import Archives from "@/pages/Archives";
 import ArchiveChapter from "@/pages/ArchiveChapter";
 import Collections from "@/pages/Collections";
+import Product from "@/pages/Product";
+import Cart from "@/pages/Cart";
+import About from "@/pages/About";
+import PaymentSuccess from "@/pages/PaymentSuccess";
+import PaymentCancel from "@/pages/PaymentCancel";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -34,7 +41,7 @@ const Home = () => (
       <div className="hg-hero-scrim" />
       <div className="hg-hero-content">
         <img
-          src="/images/official/emblem.png"
+          src="/images/official/logo.png"
           alt="HoneyGold Drip emblem"
           className="hg-hero-emblem"
           data-testid="hero-emblem"
@@ -97,29 +104,36 @@ const ComingSoon = () => (
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <ScrollToTop />
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/archives" element={<Archives />} />
-          <Route path="/archives/:slug" element={<ArchiveChapter />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="*" element={<ComingSoon />} />
-        </Routes>
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "#14100a",
-              color: "#f3ecdd",
-              border: "1px solid rgba(201, 162, 75, 0.35)",
-              fontFamily: "'Jost', sans-serif",
-              letterSpacing: "0.04em",
-            },
-          }}
-        />
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/archives" element={<Archives />} />
+            <Route path="/archives/:slug" element={<ArchiveChapter />} />
+            <Route path="/collections" element={<Collections />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/payment/success" element={<PaymentSuccess />} />
+            <Route path="/payment/cancel" element={<PaymentCancel />} />
+            <Route path="*" element={<ComingSoon />} />
+          </Routes>
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#14100a",
+                color: "#f3ecdd",
+                border: "1px solid rgba(201, 162, 75, 0.35)",
+                fontFamily: "'Jost', sans-serif",
+                letterSpacing: "0.04em",
+              },
+            }}
+          />
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }

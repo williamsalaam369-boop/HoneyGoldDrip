@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CHAPTERS } from "@/data/archives";
 import { Reveal } from "@/components/Reveal";
+import { Lightbox } from "@/components/Lightbox";
 
 const bears = CHAPTERS.filter((c) => c.group === "The Bear");
 const soloChapters = CHAPTERS.filter((c) => !c.group);
 
 export default function Archives() {
+  const [legacyOpen, setLegacyOpen] = useState(false);
   return (
     <main className="hg-arch" data-testid="archives-page">
       <section
@@ -30,11 +33,25 @@ export default function Archives() {
 
       <section className="hg-arch-section hg-legacy" data-testid="archives-legacy">
         <Reveal className="hg-legacy-art">
-          <img
+          <button
+            type="button"
+            className="hg-artframe-zoom"
+            onClick={() => setLegacyOpen(true)}
+            data-testid="legacy-artwork-zoom"
+            aria-label="View legacy artwork fullscreen"
+          >
+            <img
+              src="/images/official/legacy.png"
+              alt="HoneyGold Drip — Preserved in Honey. Eternalized in Legacy."
+              loading="lazy"
+              data-testid="legacy-artwork"
+            />
+          </button>
+          <Lightbox
             src="/images/official/legacy.png"
-            alt="HoneyGold Drip — Preserved in Honey. Eternalized in Legacy."
-            loading="lazy"
-            data-testid="legacy-artwork"
+            alt="Preserved in Honey. Eternalized in Legacy."
+            open={legacyOpen}
+            onClose={() => setLegacyOpen(false)}
           />
         </Reveal>
         <Reveal className="hg-legacy-copy" delay={140}>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const LINKS = [
   { label: "Home", to: "/" },
@@ -17,6 +18,7 @@ export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { count } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -45,7 +47,7 @@ export const Navigation = () => {
         <div className="hg-nav-inner">
           <Link to="/" data-testid="nav-brand-link" className="hg-brand">
             <img
-              src="/images/official/emblem.png"
+              src="/images/official/logo.png"
               alt=""
               className="hg-brand-emblem"
               data-testid="nav-brand-emblem"
@@ -66,15 +68,23 @@ export const Navigation = () => {
             ))}
           </nav>
 
-          <button
-            data-testid="nav-menu-toggle"
-            className="hg-burger"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-          >
-            {open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
-          </button>
+          <div className="hg-nav-actions">
+            <Link to="/cart" className="hg-cart-link" data-testid="nav-cart-link" aria-label="Cart">
+              <ShoppingBag size={19} strokeWidth={1.5} />
+              {count > 0 && (
+                <span className="hg-cart-badge" data-testid="cart-count-badge">{count}</span>
+              )}
+            </Link>
+            <button
+              data-testid="nav-menu-toggle"
+              className="hg-burger"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+            >
+              {open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+            </button>
+          </div>
         </div>
       </header>
 
