@@ -92,3 +92,8 @@ The site is being built incrementally, one scoped piece at a time.
 ## Remaining Backlog
 - P1: Order History / admin view (user deferred), Size Guide (after product pages locked), Stripe claim + deploy (user deferred).
 - P2: Real journal content when provided; PayPal/Razorpay ("everything possible" — future).
+
+- 2026-06: Size Guide (product pages only) — tap-open drawer (desktop right / mobile bottom sheet); body-fit reference tables + TBA garment measurement placeholders (shirts: chest/length/sleeve; jeans: waist/inseam/leg opening) + How to Measure. Verified open/close/mobile/add-to-cart unaffected.
+- 2026-06: Footer + placeholder policy pages — TESTED (iteration_3.json, 100% pass)
+  - Site-wide footer: logo emblem, wordmark, tagline, quick links (Home/Collections/Archives/Journal/About/Contact), customer care (Shipping/Returns/Privacy/Terms → /policies/:slug placeholder pages, clearly unpublished), social icon PLACEHOLDERS (span, non-links, "coming soon"), copyright. Mobile responsive.
+  - User explicitly DEFERRED go-live/deployment ("Do not go live. Not ready to publish").

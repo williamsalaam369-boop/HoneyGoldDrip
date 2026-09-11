@@ -16,6 +16,8 @@ import PaymentSuccess from "@/pages/PaymentSuccess";
 import PaymentCancel from "@/pages/PaymentCancel";
 import Journal from "@/pages/Journal";
 import Contact from "@/pages/Contact";
+import Policy from "@/pages/Policy";
+import { Footer } from "@/components/Footer";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -120,10 +122,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/policies/:slug" element={<Policy />} />
             <Route path="/payment/success" element={<PaymentSuccess />} />
             <Route path="/payment/cancel" element={<PaymentCancel />} />
             <Route path="*" element={<ComingSoon />} />
           </Routes>
+          <Footer />
           <Toaster
             position="bottom-right"
             toastOptions={{
